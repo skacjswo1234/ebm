@@ -1,0 +1,415 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Noto Sans KR', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    line-height: 1.6;
+    color: #1a237e; /* 남색 텍스트 */
+    padding-top: 0;
+}
+
+/* 헤더 스타일 */
+header {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    background-color: transparent;
+    color: #1a237e;
+    padding: 1rem 0;
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+
+header.has-scrolled {
+    background-color: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2rem;
+}
+
+.logo {
+    height: 50px;
+    width: auto;
+}
+
+/* 데스크톱 네비게이션 */
+.desktop-nav {
+    display: block;
+}
+
+.menu-open {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.6rem 1rem;
+    background: transparent;
+    color: #1a237e;
+    border: 1px solid #1a237e;
+    border-radius: 999px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+
+.menu-open .menu-icon {
+    font-size: 1.1rem;
+}
+
+.menu-open:hover {
+    background-color: #1a237e;
+    color: #ffffff;
+    border-color: #1a237e;
+}
+
+/* 햄버거 메뉴 버튼 */
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 30px;
+    height: 30px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 1001;
+}
+
+.menu-toggle span {
+    width: 100%;
+    height: 3px;
+    background-color: #1a237e;
+    border-radius: 3px;
+    transition: all 0.3s ease;
+}
+
+.menu-toggle.active span:nth-child(1) {
+    transform: rotate(45deg) translate(8px, 8px);
+}
+
+.menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-toggle.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -7px);
+}
+
+/* 모바일 메뉴 오버레이 */
+.mobile-menu-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 998;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.mobile-menu-overlay.active {
+    display: block;
+    opacity: 1;
+}
+
+/* 모바일 사이드바 네비게이션 */
+.mobile-nav {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 280px;
+    height: 100%;
+    background-color: #ffffff;
+    z-index: 999;
+    transition: right 0.3s ease;
+    box-shadow: -2px 0 8px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
+}
+
+.mobile-nav.active {
+    right: 0;
+}
+
+.mobile-nav ul {
+    list-style: none;
+    padding: 4rem 0 2rem 0;
+    margin: 0;
+}
+
+.mobile-nav li {
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.mobile-nav a {
+    display: block;
+    padding: 1.5rem 2rem;
+    color: #1a237e;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1.1rem;
+    transition: background-color 0.3s;
+}
+
+.mobile-nav a:hover {
+    background-color: #f5f5f5;
+}
+
+/* 메인 콘텐츠 */
+main {
+    width: 100%;
+}
+
+.image-section {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.image-section img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: contain;
+}
+
+/* 데스크톱/모바일 이미지 전환 */
+.pc-img {
+    display: block;
+}
+
+.mob-img {
+    display: none !important;
+}
+
+/* 데스크탑에서 mob 이미지 완전히 숨김 */
+@media (min-width: 769px) {
+    .pc-img {
+        display: block !important;
+    }
+    
+    .mob-img {
+        display: none !important;
+    }
+}
+
+/* 모바일에서 PC 이미지 완전히 숨김 */
+@media (max-width: 768px) {
+    .pc-img {
+        display: none !important;
+    }
+    
+    .mob-img {
+        display: block !important;
+        width: 100%;
+        height: auto;
+        max-width: 100%;
+        object-fit: contain;
+    }
+    
+    .image-section {
+        width: 100%;
+        max-width: 100%;
+        overflow: visible;
+        min-height: auto;
+    }
+    
+    /* 첫 번째 섹션(h-1-m) 이미지가 잘리지 않도록 */
+    #section-1 {
+        overflow: visible;
+        min-height: auto;
+    }
+    
+    #section-1 .mob-img {
+        width: 100%;
+        height: auto;
+        max-width: 100%;
+        object-fit: contain;
+        display: block !important;
+    }
+    
+    /* mob 이미지가 없는 섹션(h-11, h-12) 및 h-10 섹션 숨김 */
+    #section-10,
+    #section-11,
+    #section-12 {
+        display: none;
+    }
+}
+
+.hero-section {
+    position: relative;
+}
+
+/* 문의폼 섹션 */
+.contact-form-section {
+    background-color: #f8f9fa;
+    padding: 4rem 0;
+}
+
+.contact-form-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.contact-form-container h2 {
+    color: #1a237e;
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.inquiry-form {
+    background-color: #ffffff;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    color: #1a237e;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    font-family: 'Pretendard', 'Noto Sans KR', sans-serif;
+    font-size: 1rem;
+    color: #1a237e;
+    transition: border-color 0.3s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #1a237e;
+}
+
+.form-group textarea {
+    resize: vertical;
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 1rem;
+    background-color: #1a237e;
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-family: 'Pretendard', 'Noto Sans KR', sans-serif;
+}
+
+.submit-btn:hover {
+    background-color: #283593;
+}
+
+/* Top 버튼 */
+.top-btn {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: 50px;
+    height: 50px;
+    background-color: #1a237e;
+    color: #ffffff;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 999;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.top-btn:hover {
+    background-color: #283593;
+    transform: translateY(-3px);
+}
+
+.top-btn.show {
+    display: flex;
+}
+
+/* 푸터 스타일 */
+footer {
+    background-color: #ffffff; /* 화이트 배경 */
+    color: #1a237e; /* 남색 텍스트 */
+    padding: 2rem 0;
+    text-align: center;
+    border-top: 1px solid #e0e0e0;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+    .header-container {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .desktop-nav {
+        display: none;
+    }
+
+    .menu-toggle {
+        display: flex;
+    }
+
+    .logo {
+        height: 40px;
+    }
+
+    .contact-form-container {
+        padding: 0 1rem;
+    }
+
+    .inquiry-form {
+        padding: 1.5rem;
+    }
+
+    .top-btn {
+        bottom: 1rem;
+        right: 1rem;
+        width: 45px;
+        height: 45px;
+    }
+
+}
+

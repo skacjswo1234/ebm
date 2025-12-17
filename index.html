@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EBM</title>
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <img src="ebm-logo.png" alt="EBM Logo" class="logo">
+            <button class="menu-toggle" id="menuToggle" aria-label="모바일 메뉴 열기">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <nav class="desktop-nav">
+                <button class="menu-open" id="desktopMenuToggle" aria-label="메뉴 열기">
+                    MENU <span class="menu-icon">☰</span>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- 모바일 사이드바 메뉴 -->
+    <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
+    <nav class="mobile-nav" id="mobileNav">
+        <ul>
+            <li><a href="#section-1" class="nav-link">홈</a></li>
+            <li><a href="#section-6" class="nav-link">서비스</a></li>
+            <li><a href="#contact-form" class="nav-link">문의하기</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section id="section-1" class="image-section hero-section">
+            <img src="images/pc/h-1.png" alt="Section 1" class="pc-img">
+            <img src="images/mob/h-1-m.png" alt="Section 1" class="mob-img">
+        </section>
+        <section id="section-2" class="image-section">
+            <img src="images/pc/h-2.png" alt="Section 2" class="pc-img">
+            <img src="images/mob/h-2-m.png" alt="Section 2" class="mob-img">
+        </section>
+        <section id="section-3" class="image-section">
+            <img src="images/pc/h-3.png" alt="Section 3" class="pc-img">
+            <img src="images/mob/h-3-m.png" alt="Section 3" class="mob-img">
+        </section>
+        <section id="section-4" class="image-section">
+            <img src="images/pc/h-4.png" alt="Section 4" class="pc-img">
+            <img src="images/mob/h-4-m.png" alt="Section 4" class="mob-img">
+        </section>
+        <section id="section-5" class="image-section">
+            <img src="images/pc/h-5.png" alt="Section 5" class="pc-img">
+            <img src="images/mob/h-5-m.png" alt="Section 5" class="mob-img">
+        </section>
+        <section id="section-6" class="image-section">
+            <img src="images/pc/h-6.png" alt="Section 6" class="pc-img">
+            <img src="images/mob/h-6-m.png" alt="Section 6" class="mob-img">
+        </section>
+        <section id="section-7" class="image-section">
+            <img src="images/pc/h-7.png" alt="Section 7" class="pc-img">
+            <img src="images/mob/h-7-m.png" alt="Section 7" class="mob-img">
+        </section>
+        <section id="section-8" class="image-section">
+            <img src="images/pc/h-8.png" alt="Section 8" class="pc-img">
+            <img src="images/mob/h-8-m.png" alt="Section 8" class="mob-img">
+        </section>
+        <section id="section-9" class="image-section">
+            <img src="images/pc/h-9.png" alt="Section 9" class="pc-img">
+            <img src="images/mob/h-9-m.png" alt="Section 9" class="mob-img">
+        </section>
+        <section id="section-10" class="image-section">
+            <img src="images/pc/h-10.png" alt="Section 10" class="pc-img">
+            <img src="images/mob/h-10-m.png" alt="Section 10" class="mob-img">
+        </section>
+        <section id="section-11" class="image-section">
+            <img src="images/pc/h-11.png" alt="Section 11" class="pc-img">
+        </section>
+        <section id="section-12" class="image-section">
+            <img src="images/pc/h-12.png" alt="Section 12" class="pc-img">
+        </section>
+    </main>
+
+    <section id="contact-form" class="contact-form-section">
+        <div class="contact-form-container">
+            <h2>문의하기</h2>
+            <form id="inquiryForm" class="inquiry-form">
+                <div class="form-group">
+                    <label for="company">회사명</label>
+                    <input type="text" id="company" name="company" required>
+                </div>
+                <div class="form-group">
+                    <label for="contact">연락처</label>
+                    <input type="tel" id="contact" name="contact" required>
+                </div>
+                <div class="form-group">
+                    <label for="inquiry">문의내용</label>
+                    <textarea id="inquiry" name="inquiry" rows="5" required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">문의하기</button>
+            </form>
+        </div>
+    </section>
+
+    <button id="topBtn" class="top-btn" aria-label="맨 위로 이동">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 4L4 12H8V20H16V12H20L12 4Z" fill="currentColor"/>
+        </svg>
+    </button>
+
+    <footer>
+        <div class="footer-container">
+            <p>&copy; 2024 EBM. All rights reserved.</p>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
+
