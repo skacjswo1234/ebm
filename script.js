@@ -75,6 +75,7 @@ if (inquiryForm) {
         
         const formData = {
             company: document.getElementById('company').value,
+            industry: document.getElementById('industry').value,
             contact: document.getElementById('contact').value,
             inquiry: document.getElementById('inquiry').value
         };
